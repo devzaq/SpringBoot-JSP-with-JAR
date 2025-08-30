@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Our Website! ${username}</h1>
+    <h1>Welcome to Our Website!</h1>
     <p>We are glad you're here. Explore our content and enjoy your visit.</p>
     <p>Feel free to navigate using the links below (if applicable).</p>
 </body>

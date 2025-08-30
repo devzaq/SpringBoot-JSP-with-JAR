@@ -1,5 +1,6 @@
 package com.in1day.springboot.myfirstwebapp.login;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String goToLoginPage(){
@@ -17,7 +20,18 @@ public class LoginController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String goToWelcomePage(@RequestParam String username, @RequestParam String password, ModelMap model){
-        model.put("username", username);
-        return "welcome";
+//        model.put("username", username);
+        //Authentication
+        //username: namezz
+        //password: dummy
+
+
+        if (authenticationService.authenticate(username, password))
+            return "welcome";
+
+        model.put("errorMessage", "Invalid Username or Password");
+        return "loginPage";
+
+
     }
 }

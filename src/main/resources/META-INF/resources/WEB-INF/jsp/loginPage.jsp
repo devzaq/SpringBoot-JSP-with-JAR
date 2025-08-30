@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,10 +60,24 @@
         .form-group input[type="submit"]:hover {
             background-color: purple;
         }
+        .error-message {
+          position: fixed; /* Positions the div relative to the viewport */
+          top: 0;          /* Aligns it to the very top */
+          left: 0;         /* Aligns it to the left side */
+          width: 100%;     /* Makes it span the full width of the screen */
+          background-color: red; /* Sets the background color to red */
+          color: white;    /* Sets the text color to white for contrast */
+          text-align: center; /* Centers the text */
+          padding: 10px;   /* Adds some space around the text */
+          z-index: 1000;   /* Ensures the message appears on top of other content */
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
+    <c:if test="${not empty errorMessage}">
+        <div class="error-message">Invalid username or password</div>
+    </c:if>
         <h2>Login</h2>
         <form method="post">
             <div class="form-group">
