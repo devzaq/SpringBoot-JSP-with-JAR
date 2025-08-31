@@ -7,4 +7,5 @@ This location is mandated by the JSR-245 JavaServer Pages 2.1 Specification, all
 This bypasses the issue of Spring Boot treating JSPs as static resources. You also need to add the `tomcat-embed-jasper` and `JSTL` dependencies to your `pom.xml` and configure the 
 view `prefix/suffix` in `application.properties` to ensure correct rendering. This method is the reliable standard for serving JSPs in a Spring Boot JAR.
 
-## [Source](https://dzone.com/articles/spring-boot-with-jsps-in-executable-jars-1)
+## Source
+[DZone Spring Boot With JSPs in Executable Jars](https://dzone.com/articles/spring-boot-with-jsps-in-executable-jars-1)
