@@ -31,7 +31,7 @@
     <!-- Main content container -->
     <div class="container my-5" style="max-width: 500px;">
         <!-- Page Header -->
-        <h1 class="h3 fw-bold text-center mb-4" style="color: darkviolet;">My To-Do List</h1>
+        <h1 class="h3 fw-bold text-center mb-4">My To-Do List</h1>
 
         <!-- To-Do Items List -->
         <div class="list-group">
@@ -69,7 +69,7 @@
                     </div>
                 </div>
             </c:forEach>
-
+            <a href="add-todo" class="btn btn-primary">Add TODO</a>
             <!-- A message to show if the list is empty -->
             <c:if test="${empty todos}">
                 <div class="text-center p-4 text-secondary fst-italic">No to-do items found.</div>

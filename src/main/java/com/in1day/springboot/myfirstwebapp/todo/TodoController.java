@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -24,6 +23,16 @@ public class TodoController {
         List<Todo> todos = todoService.findByUser("");
         model.put("todos", todos);
         return "listTodos";
+    }
+
+    @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
+    public String showNewTodoPage(){
+        return "todo";
+    }
+
+    @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+    public String addNewTodo(){
+        return "redirect:list-todos";
     }
 
 }
