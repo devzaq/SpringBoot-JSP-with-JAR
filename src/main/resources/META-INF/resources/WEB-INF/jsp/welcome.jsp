@@ -21,8 +21,9 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Our Website!</h1>
+    <h1>Welcome to Our Website! ${name}</h1>
     <p>We are glad you're here. Explore our content and enjoy your visit.</p>
     <p>Feel free to navigate using the links below (if applicable).</p>
+    <div><a href="list-todos">Manage Your TODOs</a></div>
 </body>
 </html>

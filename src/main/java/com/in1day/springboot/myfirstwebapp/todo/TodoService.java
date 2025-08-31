@@ -1,13 +1,19 @@
 package com.in1day.springboot.myfirstwebapp.todo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class TodoService {
 
-    private static List<Todo> todos;
+    private static final List<Todo> todos;
 
     static {
+        todos = new ArrayList<>();
         todos.add(
                 new Todo(1,
                         "Jack",
@@ -17,7 +23,7 @@ public class TodoService {
                 )
         );
         todos.add(
-                new Todo(1,
+                new Todo(2,
                         "Jack",
                         "Learn Docker",
                         LocalDate.now().plusDays(3),
@@ -25,7 +31,7 @@ public class TodoService {
                 )
         );
         todos.add(
-                new Todo(1,
+                new Todo(3,
                         "Jack",
                         "Learn AWS",
                         LocalDate.now().plusDays(5),
