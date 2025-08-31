@@ -18,3 +18,8 @@ view `prefix/suffix` in `application.properties` to ensure correct rendering. Th
 #### [1. Spring Boot: Integrating With Bootstrap and jQuery Using Web Jars (DZone)](https://dzone.com/articles/spring-boot-integrating-with-bootstrap-and-jquery)
 #### [2. Spring Boot - Integrating with Bootstrap & jQuery using Web Jars (in28minutes)](https://www.springboottutorial.com/spring-boot-with-jquery-and-bootstrap-web-jars)
 
+## Accessing username from the session 
+
+* @SessionAttribute("username") String username
+* @ModelAttribute("username") String username,
+* ModelMap model => (String) model.get("username")
