@@ -9,3 +9,9 @@ view `prefix/suffix` in `application.properties` to ensure correct rendering. Th
 
 ## Source
 [DZone Spring Boot With JSPs in Executable Jars](https://dzone.com/articles/spring-boot-with-jsps-in-executable-jars-1)
+
+### **(IntelliJ idea issue)** Spring boot run configuration does not find resources in META-INF 
+
+>The problem is that `Jasper` is `marked` as `provided` in the `pom` so it's **not on the classpath**. It causes Spring Boot to go down a code path where various JSP-related bits and pieces are not enabled. You can avoid it by **removing** `<scope>provided</scope>` from your `pom`as it's only necessary when building a war file that will be deployed to a servlet container.
+
+
