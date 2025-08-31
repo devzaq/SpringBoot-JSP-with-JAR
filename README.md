@@ -14,6 +14,7 @@ view `prefix/suffix` in `application.properties` to ensure correct rendering. Th
 
 >The problem is that `Jasper` is `marked` as `provided` in the `pom` so it's **not on the classpath**. It causes Spring Boot to go down a code path where various JSP-related bits and pieces are not enabled. You can avoid it by **removing** `<scope>provided</scope>` from your `pom`as it's only necessary when building a war file that will be deployed to a servlet container.
 
-## [1. Spring Boot: Integrating With Bootstrap and jQuery Using Web Jars](https://dzone.com/articles/spring-boot-integrating-with-bootstrap-and-jquery)
-## [2. Spring Boot - Integrating with Bootstrap & jQuery using Web Jars](https://www.springboottutorial.com/spring-boot-with-jquery-and-bootstrap-web-jars)
+## Integrating With Bootstrap and jQuery Using Web Jars
+### [1. Spring Boot: Integrating With Bootstrap and jQuery Using Web Jars (DZone)](https://dzone.com/articles/spring-boot-integrating-with-bootstrap-and-jquery)
+### [2. Spring Boot - Integrating with Bootstrap & jQuery using Web Jars (in28minutes)](https://www.springboottutorial.com/spring-boot-with-jquery-and-bootstrap-web-jars)
 
