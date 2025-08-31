@@ -3,11 +3,11 @@ package com.in1day.springboot.myfirstwebapp.todo;
 import java.time.LocalDate;
 
 public class Todo {
-    private int id;
+    private Integer id;
     private String username;
     private String description;
     private LocalDate targetDate;
-    private boolean done;
+    private Boolean done;
 
     public Todo(int id, String username, String description, LocalDate targetDate, boolean done) {
         this.id = id;

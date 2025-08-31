@@ -33,11 +33,8 @@
 </head>
 <body>
     <div class="container my-5 text-secondary">
-        <h2 class="h3 fw-bold text-center mb-4">Add a New TODO</h2>
+        <h2 class="h3 fw-bold text-center mb-4">Add a ${username} New TODO</h2>
         <form method="post">
-            <!-- Hidden fields for id and username -->
-            <input type="hidden" name="id" value="${todo.id}"/>
-            <input type="hidden" name="username" value="${name}"/>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>

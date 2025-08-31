@@ -11,11 +11,11 @@ import java.util.List;
 public class TodoService {
 
     private static final List<Todo> todos;
-
+    private static int id = 1;
     static {
         todos = new ArrayList<>();
         todos.add(
-                new Todo(1,
+                new Todo(id++,
                         "Jack",
                         "Complete the Todo Project",
                         LocalDate.now().plusDays(2),
@@ -23,7 +23,7 @@ public class TodoService {
                 )
         );
         todos.add(
-                new Todo(2,
+                new Todo(id++,
                         "Jack",
                         "Learn Docker",
                         LocalDate.now().plusDays(3),
@@ -31,7 +31,7 @@ public class TodoService {
                 )
         );
         todos.add(
-                new Todo(3,
+                new Todo(id++,
                         "Jack",
                         "Learn AWS",
                         LocalDate.now().plusDays(5),
@@ -44,8 +44,10 @@ public class TodoService {
         return todos;
     }
 
-    public void addTodo(Todo todo){
+    public void addTodo(String username, String description, LocalDate date, boolean isDone){
+        Todo todo = new Todo(id++,username,description, date, isDone );
         todos.add(todo);
     }
+
 
 }

@@ -2,10 +2,9 @@ package com.in1day.springboot.myfirstwebapp.todo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -30,15 +29,21 @@ public class TodoController {
         return "todo";
     }
 
+
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-    public String addNewTodo(){
+    public String addNewTodo(
+            ModelMap model,
+//            @ModelAttribute("username") String username,
+            @RequestParam String description,
+            @RequestParam LocalDate targetDate,
+            @RequestParam(required = false, defaultValue = "false") boolean done
+    ){
+        todoService.addTodo((String) model.get("username"), description, targetDate, done);
         return "redirect:list-todos";
     }
 
 }
 
-//private int id;
-//private String username;
-//private String description;
-//private LocalDate targetDate;
-//private boolean done;
+//            <!-- Hidden fields for id and username -->
+//            <input type="hidden" name="id" value="${todo.id}"/>
+//            <input type="hidden" name="username" value="${name}"/>
