@@ -4,64 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap CSS -->
+    <link href="webjars\bootstrap\5.1.3\css\bootstrap.min.css" rel="stylesheet"/>
     <style>
-        /* Custom styles for buttons */
         .btn-primary {
             background-color: darkviolet;
+            border-color: darkviolet;
         }
         .btn-primary:hover {
             background-color: #5d00a1; /* A slightly darker shade for hover effect */
+            border-color: #5d00a1;
         }
         .btn-secondary {
             background-color: purple;
+            border-color: purple;
         }
         .btn-secondary:hover {
             background-color: #800080; /* A slightly darker shade for hover effect */
+            border-color: #800080;
         }
     </style>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ page import="java.time.LocalDate, java.time.temporal.ChronoUnit" %>
 </head>
-<body class="bg-gray-100 font-sans text-gray-800">
+<body class="bg-light font-sans text-secondary">
     <!-- Main content container -->
-    <div class="container mx-auto p-4 sm:p-8 max-w-lg">
+    <div class="container my-5" style="max-width: 500px;">
         <!-- Page Header -->
-        <h1 class="text-3xl font-bold text-center mb-6 text-darkviolet">${name}'s To-Do List</h1>
+        <h1 class="h3 fw-bold text-center mb-4" style="color: darkviolet;">My To-Do List</h1>
 
         <!-- To-Do Items List -->
-        <div class="space-y-4">
+        <div class="list-group">
             <c:forEach var="todo" items="${todos}">
-                <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <div class="flex items-center justify-between mb-2">
-                        <h3 class="text-lg font-semibold <c:if test="${todo.done}">line-through text-gray-400</c:if>">
-                            <span class="text-sm text-gray-500 font-normal mr-2">#${todo.id}</span>
+                <div class="list-group-item shadow-sm rounded mb-3 p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="fw-semibold <c:if test="${todo.done}">text-decoration-line-through text-muted</c:if>">
+                            <span class="small text-secondary me-2">#${todo.id}</span>
                             ${todo.description}
-                        </h3>
-                        <div class="flex items-center space-x-2">
-                            <span class="text-sm font-normal text-gray-500">Done</span>
-                            <input type="checkbox"
-                                   <c:if test="${todo.done}">checked</c:if>
-                                   class="form-checkbox text-purple-600 rounded-md h-5 w-5 border-gray-300 focus:ring-purple-500 cursor-pointer">
+                        </h5>
+                        <div class="form-check">
+                            <label class="form-check-label small text-secondary me-2" for="doneCheck">Done</label>
+                            <input class="form-check-input" type="checkbox" value="" id="doneCheck"
+                                   <c:if test="${todo.done}">checked</c:if> >
                         </div>
                     </div>
-                    <div class="text-sm text-gray-500 mb-2">
-                        <span class="font-medium">Username:</span> ${todo.username}
-                    </div>
-                    <div class="text-sm text-gray-500 mb-2">
-                        <span class="font-medium">Target Date:</span> ${todo.targetDate}
-                    </div>
+                    <small class="d-block text-secondary mb-1">
+                        <span class="fw-medium">Username:</span> ${todo.username}
+                    </small>
+                    <small class="d-block text-secondary mb-2">
+                        <span class="fw-medium">Target Date:</span> ${todo.targetDate}
+                    </small>
                     <!-- Days Remaining -->
-                    <div class="text-sm text-gray-500 mb-4">
-                        <span class="font-medium">Days Remaining:</span>
-                        <span class="font-semibold">${ChronoUnit.DAYS.between(LocalDate.now(), todo.targetDate)}</span>
-                    </div>
-                    <div class="flex space-x-2">
-                        <button class="btn-primary text-white font-semibold py-1 px-3 rounded-md shadow hover:shadow-md transition-all text-sm">
+                    <small class="d-block text-secondary mb-3">
+                        <span class="fw-medium">Days Remaining:</span>
+                        ${ChronoUnit.DAYS.between(LocalDate.now(), todo.targetDate)}
+                    </small>
+                    <div class="d-flex justify-content-start">
+                        <button class="btn btn-primary btn-sm me-2">
                             Edit
                         </button>
-                        <button class="btn-secondary text-white font-semibold py-1 px-3 rounded-md shadow hover:shadow-md transition-all text-sm">
+                        <button class="btn btn-secondary btn-sm">
                             Delete
                         </button>
                     </div>
@@ -70,9 +72,12 @@
 
             <!-- A message to show if the list is empty -->
             <c:if test="${empty todos}">
-                <div class="text-center p-6 text-gray-500 italic">No to-do items found.</div>
+                <div class="text-center p-4 text-secondary fst-italic">No to-do items found.</div>
             </c:if>
         </div>
     </div>
+    <!-- jQuery and Bootstrap JavaScript -->
+    <script src="webjars\jquery\3.6.0\jquery.min.js"></script>
+    <script src="webjars\bootstrap\5.1.3\js\bootstrap.min.js"></script>
 </body>
 </html>
