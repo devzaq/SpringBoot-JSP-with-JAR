@@ -40,11 +40,13 @@
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <form:textarea id="description" path="description" class="form-control" rows="3" required="required" />
+                <form:errors id="description" path="description" cssClass="text-danger" />
             </div>
 
             <div class="mb-3">
                 <label for="targetDate" class="form-label">Target Date</label>
-                <form:input type="date" id="targetDate" path="targetDate" class="form-control" required="required" />
+                <form:input type="date" value="${todo.targetDate}" id="targetDate" path="targetDate" class="form-control" required="required" />
+                <form:errors id="targetDate" path="targetDate" cssClass="text-danger" />
             </div>
 
             <div class="mb-3 form-check">
