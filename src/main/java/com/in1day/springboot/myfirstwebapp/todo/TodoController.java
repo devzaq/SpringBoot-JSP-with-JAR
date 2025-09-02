@@ -12,7 +12,6 @@ import java.util.List;
 public class TodoController {
 
     private TodoService todoService;
-
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
@@ -25,25 +24,31 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-    public String showNewTodoPage(){
+    public String showNewTodoPage(ModelMap model){
+        model.put("todo",new Todo());
         return "todo";
     }
 
 
+//    @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+//    public String addNewTodo(
+//            @SessionAttribute String username,
+//            @RequestParam String description,
+//            @RequestParam LocalDate targetDate,
+//            @RequestParam(required = false, defaultValue = "false") boolean done
+//    ){
+//        todoService.addTodo(username, description, targetDate, done);
+//        return "redirect:list-todos";
+//    }
+
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
     public String addNewTodo(
-            ModelMap model,
-//            @ModelAttribute("username") String username,
-            @RequestParam String description,
-            @RequestParam LocalDate targetDate,
-            @RequestParam(required = false, defaultValue = "false") boolean done
+            @SessionAttribute String username,
+            Todo todo
     ){
-        todoService.addTodo((String) model.get("username"), description, targetDate, done);
+        todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(), todo.isDone());
         return "redirect:list-todos";
     }
 
 }
 
-//            <!-- Hidden fields for id and username -->
-//            <input type="hidden" name="id" value="${todo.id}"/>
-//            <input type="hidden" name="username" value="${name}"/>

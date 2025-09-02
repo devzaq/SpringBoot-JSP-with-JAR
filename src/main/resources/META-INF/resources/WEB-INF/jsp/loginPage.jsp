@@ -40,7 +40,7 @@
     </style>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
-    <div class="login-card w-100" style="max-width: 300px;">
+    <div class="container login-card w-100" style="max-width: 300px;">
         <c:if test="${not empty errorMessage}">
             <div class="error-message">Invalid username or password</div>
         </c:if>

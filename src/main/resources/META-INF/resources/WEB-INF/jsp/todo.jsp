@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,25 +35,27 @@
 <body>
     <div class="container my-5 text-secondary">
         <h2 class="h3 fw-bold text-center mb-4">Add a ${username} New TODO</h2>
-        <form method="post">
+        <form:form method="post" modelAttribute="todo">
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea id="description" name="description" class="form-control" rows="3" required>${todo.description}</textarea>
+                <form:textarea id="description" path="description" class="form-control" rows="3" required="required" />
             </div>
+
             <div class="mb-3">
                 <label for="targetDate" class="form-label">Target Date</label>
-                <input type="date" id="targetDate" name="targetDate" class="form-control" value="${todo.targetDate}" required>
+                <form:input type="date" id="targetDate" path="targetDate" class="form-control" required="required" />
             </div>
+
             <div class="mb-3 form-check">
-                <input type="checkbox" id="done" name="done" class="form-check-input" ${todo.done ? 'checked' : ''}>
+                <form:checkbox id="done" path="done" class="form-check-input" />
                 <label for="done" class="form-check-label">Is this task done?</label>
             </div>
             <div class="d-flex justify-content-start gap-2 mt-4">
                 <button type="submit" class="btn btn-primary">Add TODO</button>
                 <a href="list-todos" class="btn btn-secondary">Cancel</a>
             </div>
-        </form>
+        </form:form>
     </div>
 
     <!-- jQuery and Bootstrap JavaScript -->
