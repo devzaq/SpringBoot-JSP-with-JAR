@@ -1,7 +1,7 @@
 package com.in1day.springboot.myfirstwebapp.todo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class TodoService {
 
-    private static final List<Todo> todos;
+    private static List<Todo> todos;
     private static int id = 1;
     static {
         todos = new ArrayList<>();
@@ -50,4 +50,16 @@ public class TodoService {
     }
 
 
+    public void deleteTodoById(int id) {
+//        todos = new ArrayList<>(todos.stream().filter(todo-> todo.getId() != id).toList());
+        todos.removeIf(todo-> todo.getId() == id);
+    }
+
+    public Todo findTodoById(int id) {
+        return todos.stream().filter(t-> t.getId() == id).findFirst().orElseThrow();
+
+    }
+
+    public void updateTodo(Todo todo) {
+    }
 }

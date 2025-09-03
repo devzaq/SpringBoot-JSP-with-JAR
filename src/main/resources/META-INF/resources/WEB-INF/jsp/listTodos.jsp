@@ -60,12 +60,16 @@
                         ${ChronoUnit.DAYS.between(LocalDate.now(), todo.targetDate)}
                     </small>
                     <div class="d-flex justify-content-start">
+                        <a href="update-todo?id=${todo.id}">
                         <button class="btn btn-primary btn-sm me-2">
                             Edit
                         </button>
+                        </a>
+                        <a href="delete-todo?id=${todo.id}">
                         <button class="btn btn-secondary btn-sm">
                             Delete
                         </button>
+                        </a>
                     </div>
                 </div>
             </c:forEach>

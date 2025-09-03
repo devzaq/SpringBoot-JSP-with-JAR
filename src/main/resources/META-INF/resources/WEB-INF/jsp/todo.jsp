@@ -6,7 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add TODO</title>
+    <c:choose>
+        <c:when test="${not empty todo.id}">
+            <title>Update TODO</title>
+        </c:when>
+        <c:otherwise>
+            <title>Add TODO</title>
+        </c:otherwise>
+    </c:choose>
     <!-- Bootstrap CSS -->
     <link href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
@@ -34,27 +41,40 @@
 </head>
 <body>
     <div class="container my-5 text-secondary">
-        <h2 class="h3 fw-bold text-center mb-4">Add a ${username} New TODO</h2>
         <form:form method="post" modelAttribute="todo">
+            <c:choose>
+                <c:when test="${not empty todo.id}">
+                    <h2 class="h3 fw-bold text-center mb-4">Update TODO</h2>
+                    <form:input type="hidden" path="id" />
+                    <form:input type="hidden" path="username" />
+                </c:when>
+                <c:otherwise>
+                    <h2 class="h3 fw-bold text-center mb-4">Add a ${username} New TODO</h2>
+                </c:otherwise>
+            </c:choose>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <form:textarea id="description" path="description" class="form-control" rows="3" required="required" />
-                <form:errors id="description" path="description" cssClass="text-danger" />
+                <form:errors path="description" cssClass="text-warning" />
             </div>
-
             <div class="mb-3">
                 <label for="targetDate" class="form-label">Target Date</label>
-                <form:input type="date" value="${todo.targetDate}" id="targetDate" path="targetDate" class="form-control" required="required" />
-                <form:errors id="targetDate" path="targetDate" cssClass="text-danger" />
+                <form:input type="date" id="targetDate" path="targetDate" class="form-control" required="required" />
             </div>
-
             <div class="mb-3 form-check">
                 <form:checkbox id="done" path="done" class="form-check-input" />
                 <label for="done" class="form-check-label">Is this task done?</label>
             </div>
             <div class="d-flex justify-content-start gap-2 mt-4">
-                <button type="submit" class="btn btn-primary">Add TODO</button>
+                <c:choose>
+                    <c:when test="${not empty todo.id}">
+                        <button type="submit" class="btn btn-primary">Update TODO</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="submit" class="btn btn-primary">Add TODO</button>
+                    </c:otherwise>
+                </c:choose>
                 <a href="list-todos" class="btn btn-secondary">Cancel</a>
             </div>
         </form:form>
