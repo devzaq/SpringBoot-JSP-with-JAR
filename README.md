@@ -31,4 +31,10 @@ The problem is that `Jasper` is `marked` as `provided` in the `pom` so it's **no
 4. Display validation error in the view
     * todo.jsp
 
+## Recommendations
+* Configure Date-Time in Properties File in order to correctly display date in the view
+> spring.mvc.format.date=yyyy-MM-dd
+
+## Important Links
 * [Spring boot form tag library](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/view.html)
+* [Working with dates in spring boot](https://www.baeldung.com/spring-date-parameters)

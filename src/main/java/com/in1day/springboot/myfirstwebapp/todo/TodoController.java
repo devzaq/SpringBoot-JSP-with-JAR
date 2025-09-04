@@ -70,9 +70,10 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
-    public String updateTodo(ModelMap model){
-//        todoService.updateTodo(todo);
-        return "redirect:list-todo";
+    public String updateTodo(@Valid Todo todo, BindingResult result, ModelMap model){
+        if(result.hasErrors()) return "todo";
+        todoService.updateTodo(todo);
+        return "redirect:list-todos";
     }
 
 }

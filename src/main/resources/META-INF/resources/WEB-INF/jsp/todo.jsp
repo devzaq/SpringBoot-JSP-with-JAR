@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,17 +55,18 @@
             </c:choose>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+                <form:label path="description" class="form-label">Description</form:label>
                 <form:textarea id="description" path="description" class="form-control" rows="3" required="required" />
                 <form:errors path="description" cssClass="text-warning" />
             </div>
             <div class="mb-3">
-                <label for="targetDate" class="form-label">Target Date</label>
+                <form:label path="targetDate" class="form-label">Target Date</form:label>
                 <form:input type="date" id="targetDate" path="targetDate" class="form-control" required="required" />
+                <form:errors path="targetDate" cssClass="text-warning" />
             </div>
             <div class="mb-3 form-check">
                 <form:checkbox id="done" path="done" class="form-check-input" />
-                <label for="done" class="form-check-label">Is this task done?</label>
+                <form:label path="done" class="form-check-label">Is this task done?</form:label>
             </div>
             <div class="d-flex justify-content-start gap-2 mt-4">
                 <c:choose>

@@ -1,7 +1,6 @@
 package com.in1day.springboot.myfirstwebapp.todo;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -61,5 +60,7 @@ public class TodoService {
     }
 
     public void updateTodo(Todo todo) {
+        deleteTodoById(todo.getId());
+        todos.add(todo);
     }
 }

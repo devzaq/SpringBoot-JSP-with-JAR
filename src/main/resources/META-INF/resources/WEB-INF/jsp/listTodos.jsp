@@ -28,8 +28,10 @@
     <%@ page import="java.time.LocalDate, java.time.temporal.ChronoUnit" %>
 </head>
 <body class="bg-light font-sans text-secondary">
+    <!-- Navbar -->
+    <jsp:include page="navbar.jsp" />
     <!-- Main content container -->
-    <div class="container my-5" style="max-width: 500px;">
+    <div class="container pt-5" style="max-width: 500px;">
         <!-- Page Header -->
         <h1 class="h3 fw-bold text-center mb-4">My To-Do List</h1>
 
@@ -39,7 +41,6 @@
                 <div class="list-group-item shadow-sm rounded mb-3 p-4">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <h5 class="fw-semibold <c:if test="${todo.done}">text-decoration-line-through text-muted</c:if>">
-                            <span class="small text-secondary me-2">#${todo.id}</span>
                             ${todo.description}
                         </h5>
                         <div class="form-check">
