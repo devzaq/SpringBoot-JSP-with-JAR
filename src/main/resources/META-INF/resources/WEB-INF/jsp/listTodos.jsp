@@ -1,37 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
-    <!-- Bootstrap CSS -->
-    <link href="webjars\bootstrap\5.1.3\css\bootstrap.min.css" rel="stylesheet"/>
-    <style>
-        .btn-primary {
-            background-color: darkviolet;
-            border-color: darkviolet;
-        }
-        .btn-primary:hover {
-            background-color: #5d00a1; /* A slightly darker shade for hover effect */
-            border-color: #5d00a1;
-        }
-        .btn-secondary {
-            background-color: purple;
-            border-color: purple;
-        }
-        .btn-secondary:hover {
-            background-color: #800080; /* A slightly darker shade for hover effect */
-            border-color: #800080;
-        }
-    </style>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ page import="java.time.LocalDate, java.time.temporal.ChronoUnit" %>
-</head>
+ <!-- Header -->
+    <%@ include file="common/header.jspf"%>
+
 <body class="bg-light font-sans text-secondary">
     <!-- Navbar -->
-    <jsp:include page="navbar.jsp" />
+    <%@ include file="common/navigation.jspf"%>
     <!-- Main content container -->
-    <div class="container pt-5" style="max-width: 500px;">
+    <div class="container py-5" style="max-width: 500px;">
         <!-- Page Header -->
         <h1 class="h3 fw-bold text-center mb-4">My To-Do List</h1>
 
@@ -81,8 +55,6 @@
             </c:if>
         </div>
     </div>
-    <!-- jQuery and Bootstrap JavaScript -->
-    <script src="webjars\jquery\3.6.0\jquery.min.js"></script>
-    <script src="webjars\bootstrap\5.1.3\js\bootstrap.min.js"></script>
-</body>
-</html>
+
+<!-- Footer -->
+<%@ include file="common/footer.jspf"%>
