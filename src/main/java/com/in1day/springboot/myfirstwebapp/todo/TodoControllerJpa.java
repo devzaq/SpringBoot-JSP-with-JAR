@@ -9,20 +9,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-//@Controller
-//@SessionAttributes("username")
-public class TodoController {
+@Controller
+public class TodoControllerJpa {
 
-    private TodoService todoService;
-    public TodoController(TodoService todoService) {
-        this.todoService = todoService;
+    private TodoRepository todoRepository;
+
+    public TodoControllerJpa(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
     }
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
-    public String gotoTodo(ModelMap model, @SessionAttribute String username){
-        List<Todo> todos = todoService.findByUsername(username);
+    public String gotoTodo(ModelMap model){
+        String username = getLoggedInUsername();
+        List<Todo> t1 = new ArrayList<>();
+        List<Todo> todos = todoRepository.findByUsername(username);
         model.put("todos", todos);
         return "listTodos";
     }
@@ -42,27 +45,28 @@ public class TodoController {
             BindingResult result
     ){
         if(result.hasErrors()) return "todo";
-        todoService.addTodo(getLoggedInUsername(), todo.getDescription(), todo.getTargetDate(), todo.isDone());
+        todo.setUsername(getLoggedInUsername());
+        todoRepository.save(todo);
         return "redirect:list-todos";
     }
 
     @RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
     public String deleteTodo(@RequestParam int id){
-        todoService.deleteTodoById(id);
+        todoRepository.deleteById(id);
         return "redirect:list-todos";
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.GET)
     public String showUpdateTodo(ModelMap model, @RequestParam int id){
-        Todo todo = todoService.findTodoById(id);
+        Todo todo = todoRepository.findById(id).get();
         model.put("todo", todo);
         return "todo";
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
-    public String updateTodo(@Valid Todo todo, BindingResult result, ModelMap model){
+    public String updateTodo(@Valid Todo todo, BindingResult result){
         if(result.hasErrors()) return "todo";
-        todoService.updateTodo(todo);
+        todoRepository.save(todo);
         return "redirect:list-todos";
     }
 

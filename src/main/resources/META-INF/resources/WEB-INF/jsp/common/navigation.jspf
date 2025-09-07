@@ -17,7 +17,7 @@
             </ul>
             <div class="d-flex">
                 <!-- This form will handle the logout action as a POST request -->
-                <form action="/logout" method="post">
+                <form action="/logout">
                     <button class="btn btn-outline-light" type="submit">Logout</button>
                 </form>
             </div>

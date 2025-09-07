@@ -1,38 +1,18 @@
 <style>
-    body {
-        background-color: #f0f0f0;
-    }
-    .login-card {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
     .btn-primary {
         background-color: darkviolet;
         border-color: darkviolet;
     }
     .btn-primary:hover {
-        background-color: #5d00a1; /* A slightly darker shade for hover effect */
-        border-color: #5d00a1;
+        background-color: purple;
+        border-color: purple;
     }
     .btn-secondary {
         background-color: purple;
         border-color: purple;
     }
     .btn-secondary:hover {
-        background-color: #800080; /* A slightly darker shade for hover effect */
-        border-color: #800080;
+        background-color: darkviolet;
+        border-color: darkviolet;
     }
-    .error-message {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: red;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      z-index: 1000;
-    }
-</style>
+    </style>
