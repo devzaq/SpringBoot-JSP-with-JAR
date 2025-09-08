@@ -34,8 +34,12 @@ The problem is that `Jasper` is `marked` as `provided` in the `pom` so it's **no
 ## Recommendations
 * Configure Date-Time in Properties File in order to correctly display date in the view
 > spring.mvc.format.date=yyyy-MM-dd
-
+* Creating sql server with docker
+> docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=todos --name mysql --publish 3306:3306 mysql:8-oracle
+* Dialect explicit configuration, the "dialect" refers to the specific implementation of SQL that Hibernate uses to interact with the MySQL database
+> spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 ## Important Links
 * [Spring boot form tag library](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/view.html)
 * [Working with dates in spring boot](https://www.baeldung.com/spring-date-parameters)
 * [Quick Guide on Loading Initial Data with Spring Boot](https://www.baeldung.com/spring-boot-data-sql-and-schema-sql)
+* [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql)
